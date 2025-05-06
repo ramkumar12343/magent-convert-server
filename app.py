@@ -139,7 +139,7 @@ def extract_magnet_links_with_size(forum_url):
 
 RSS_FEEDS = [
     "https://rss.app/feeds/mTrgM9OUGFEzKIw4.xml",
-    "https://rss.app/feeds/YoxoeKAYrY0jJvof.xml",
+    "https://rss.app/feeds/ufEFkg80GAlZF432.xml",
 ]
 
 # Function to fetch and combine data from multiple RSS feeds
@@ -579,8 +579,4 @@ async def delete_folder(folder_id: int):
 
 # For local + Render deployment
 if __name__ == "__main__":
-    import os
-    import uvicorn
-
-    port = int(os.environ.get("PORT", 8000))
-    uvicorn.run(app, host="0.0.0.0", port=port)
+    app.run(debug=True)
