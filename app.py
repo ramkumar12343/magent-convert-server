@@ -30,7 +30,7 @@ app.add_middleware(
 )
 
 # Load sentence transformer model
-model = SentenceTransformer("all-MiniLM-L6-v2")
+model = SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
 
 #
 movie_cache = []
@@ -138,7 +138,7 @@ def extract_magnet_links_with_size(forum_url):
 # /search API with improved error handling (using print instead of logger)
 
 RSS_FEEDS = [
-    "https://rss.app/feeds/Mm5QLqlnzIk7CKPn.xml",
+    "https://rss.app/feeds/mTrgM9OUGFEzKIw4.xml",
     "https://rss.app/feeds/YoxoeKAYrY0jJvof.xml",
 ]
 
@@ -575,3 +575,12 @@ async def delete_folder(folder_id: int):
 #     return {
 #         "note": "Top-rated movies feature coming soon!"
 #     }
+
+
+# For local + Render deployment
+if __name__ == "__main__":
+    import os
+    import uvicorn
+
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run(app, host="0.0.0.0", port=port)
