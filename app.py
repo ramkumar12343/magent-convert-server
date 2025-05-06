@@ -12,6 +12,9 @@ from bs4 import BeautifulSoup
 import re
 import time
 import json
+import os
+import uvicorn
+
 
 # Replace with your Seedr credentials
 SEEDR_EMAIL = "artificialintelligenceee2025@gmail.com"
@@ -577,6 +580,13 @@ async def delete_folder(folder_id: int):
 #     }
 
 
-# For local + Render deployment
+# Example route
+@app.get("/")
+def read_root():
+    return {"message": "Hello, World!"}
+
+# Ensure app runs with Uvicorn on the correct port
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 8000))  # Render assigns PORT env variable
+    uvicorn.run(app, host="0.0.0.0", port=port)
+
